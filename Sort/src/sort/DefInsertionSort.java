@@ -18,15 +18,22 @@ public class DefInsertionSort {
 		
 		int arr [] = {1, 10, 3, 6, 2, 4, 9, 8, 5, 7};
 		int temp = 0;
-		boolean check = false;
 		
-		1 3 6 10 2 5 4
+	
 		for(int i = 1; i < arr.length; i++) {
-			int k = 0;
-			while(check == true){
-				
-				
-			}
+		   
+		   while(arr[i] < arr[i - 1]) {
+			  
+				   temp = arr[i - 1];
+				   arr[i - 1] = arr[i];
+				   arr[i] = temp;
+				   i --;	
+				   
+				   if(i == 0) {
+					   break;
+				   }
+			   
+		   }
 			
 		
 		}// end outer for() 

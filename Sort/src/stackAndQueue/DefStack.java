@@ -1,4 +1,4 @@
-package stackAndQue;
+package stackAndQueue;
 
 import java.util.Stack;
 
@@ -29,6 +29,11 @@ public class DefStack {
 		s.push(4);
 		s.push(5);
 		System.out.println(s.peek() + " " + s.empty());
+		
+		while(s.empty()==false) {
+			
+			System.out.println(s.pop());
+		}
 		
 		
 

@@ -29,7 +29,7 @@ public class DefBreathFirstSearch {
 			{0, 0, 1, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0},
 			{0, 0, 1, 0, 0, 0}			
-};;
+	};;
 	static boolean visit[];
 	
 	public static void main(String[] args) {

@@ -8,6 +8,7 @@ public class DefBreathFirstSearch {
 	// ** 너비우선탐색(BFS)
 	
 	// - 데이터를 탐색할 때 너비를 이용하여 탐색하는 탐색 알고리즘 
+	// - FIFO -> Queue 사용
 	// - 맹목적인 탐색 
 	// - 최단경로, 최단거리 탐색 
 	// - level단위 검색 

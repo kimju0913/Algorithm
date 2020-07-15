@@ -33,6 +33,12 @@ class Graph{
 		adj.get(node2).add(node1);
 	}// end addLink()
 	
+	public void addLink2(int node1, int node2) {	
+		// 원래는 단일방향 양방향 구분하여 메소드를 만들어야하지만 편의상 양방향으로 노드 연결
+		adj.get(node1).add(node2);
+		
+	}
+	
 	public ArrayList<ArrayList<Integer>> getGraph(){
 		// 생성된 그래프 리턴
 		return this.adj;

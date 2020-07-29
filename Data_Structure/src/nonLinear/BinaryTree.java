@@ -66,6 +66,8 @@ class Node{
 	private Node left;
 	private Node right;
 	
+	public Node() {}
+	
 	public Node(int data) {
 		this.data = data;
 	}

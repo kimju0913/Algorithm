@@ -50,6 +50,7 @@ public class BinarySearchTree {
 				return;
 			}		
 		
+		
 	}	
 	
 	public static Node insertTree(Node node, int data) {

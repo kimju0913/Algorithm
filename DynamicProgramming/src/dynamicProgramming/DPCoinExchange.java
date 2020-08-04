@@ -4,6 +4,13 @@ import java.util.Scanner;
 
 public class DPCoinExchange {
 	
+	// Coin_DP
+	// - 아래 풀이는 bottom-up 방식 
+	// - 동전의 종류를 구하는 것이 아닌 최소 동전을 구하는 문제 
+	// - dp[]에 1원일때, 2원일때, 3원일때 ... 기록 
+	// - 금액(k)에서 거슬러줄 동전(coin[n])을 빼면 dp[k-n]에 기존에 구해뒀던 최소 동전 개수가 조회된다. 
+	// 	 그 동전 개수에서 현재 동전(n) 1개가 추가되는 것이므로 dp[k] = dp[k-n] + 1이 된다.
+	
 	static int coin[];
 	static int dp[];
 	

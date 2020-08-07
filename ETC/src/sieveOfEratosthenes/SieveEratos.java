@@ -34,6 +34,25 @@ public class SieveEratos {
 //		}
 		
 		// TODO : 사람들은 첫번째 반복문에서 i^2가 전체수보다 작을경우(100이라 치면 10의 제곱이 100이라 거기까지 돌릴필요 x) + 배열을 boolean으로 받음. 이렇게 짜볼것
+		boolean [] p2 = new boolean[101];
+		
+		for(int i = 2; i < p2.length; i++) {
+			p2[i] = true;
+		}
+		
+		for(int i = 2; i*i < p2.length; i++) {
+			if(p2[i])
+			for(int j = i + i; j < 101; j += i) {
+				p2[j] = false;
+			}
+			
+		}
+		
+		for(int i = 2; i < p2.length; i++) {
+			if(p2[i]) {
+				System.out.print(i + " ");
+			}
+		}
 		
 		
 		

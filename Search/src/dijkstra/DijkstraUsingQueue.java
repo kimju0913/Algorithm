@@ -16,11 +16,22 @@ public class DijkstraUsingQueue {
 		
 	}
 	
-	public void dikstraQueue(Graph g) {
+	public void dikstraQueue(Graph g, int start) {
 		PriorityQueue<Element> queue = new PriorityQueue<Element>();
 		// https://manducku.tistory.com/32
 		// TODO : 위 페이지 보고 다익스트라 큐 버전 만들기 
 		// 		  그래프 클라스를 받아와서 그 클라스에 getN() 함수 만들어서 n값 받아오기.
+		int n = g.getN() + 1;
+		boolean visit[] = new boolean [n];
+		int distanceDP[] = new int [n];
+		int graph [][] = g.getGraph();
+		
+		distanceDP[start] = 0;
+		visit[start]= true;
+		
+		queue.offer(new Element(start, distanceDP[start]));
+		
+		
 		
 		
 		

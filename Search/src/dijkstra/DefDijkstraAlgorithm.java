@@ -79,6 +79,14 @@ class Graph{
 		
 	}
 	
+	
+	public int getN() {
+		return n;
+	}
+	public int [][] getGraph(){
+		return graph;
+	}
+
 	public void dijkstra(int node) {
 		
 		boolean visit[] = new boolean [n+1]; // 방문여부 확인 배열 

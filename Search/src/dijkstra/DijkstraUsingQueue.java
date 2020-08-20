@@ -11,26 +11,91 @@ public class DijkstraUsingQueue {
 	// - https://doublezerostone.tistory.com/31 
 	public static void main(String[] args) {
 		
+		int disConn = 1000;
 		
+		Graph test2 = new Graph(5);
+		test2.inputNode(1, 2, disConn);
+		test2.inputNode(1, 3, 2);
+		test2.inputNode(1, 4, disConn);
+		test2.inputNode(1, 5, disConn);
+		test2.inputNode(2, 3, 5);
+		test2.inputNode(2, 4, 2);
+		test2.inputNode(2, 5, 1);
+		test2.inputNode(3, 4, disConn);
+		test2.inputNode(3, 5, 1);
+		test2.inputNode(4, 5, 3);
+		dijkstraQueue(test2, 5);
 		
+		Graph test3 = new Graph(6);
+		test3.inputNode(1, 2, 1);
+		test3.inputNode(1, 3, disConn);
+		test3.inputNode(1, 4, disConn);
+		test3.inputNode(1, 5, disConn);
+		test3.inputNode(1, 6, 1);
+		test3.inputNode(2, 3, disConn);
+		test3.inputNode(2, 4, 3);
+		test3.inputNode(2, 5, disConn);
+		test3.inputNode(2, 6, 2);
+		test3.inputNode(3, 4, disConn);
+		test3.inputNode(3, 5, 1);
+		test3.inputNode(3, 6, 3);
+		test3.inputNode(4, 5, 5);
+		test3.inputNode(4, 6, 2);
+		test3.inputNode(5, 6, disConn);
+		dijkstraQueue(test3, 1);
 		
 	}
 	
-	public void dikstraQueue(Graph g, int start) {
+	public static void dijkstraQueue(Graph g, int start) {
 		PriorityQueue<Element> queue = new PriorityQueue<Element>();
-		// https://manducku.tistory.com/32
-		// TODO : 위 페이지 보고 다익스트라 큐 버전 만들기 
-		// 		  그래프 클라스를 받아와서 그 클라스에 getN() 함수 만들어서 n값 받아오기.
+		
+		// TODO : 주석달기
+		
 		int n = g.getN() + 1;
 		boolean visit[] = new boolean [n];
 		int distanceDP[] = new int [n];
 		int graph [][] = g.getGraph();
+		
+		for(int i = 0; i < n; i ++) {
+			distanceDP[i] = 1000;
+		}
+		
 		
 		distanceDP[start] = 0;
 		visit[start]= true;
 		
 		queue.offer(new Element(start, distanceDP[start]));
 		
+		while(!queue.isEmpty()) {
+			int cost = queue.peek().distance;
+			int here = queue.peek().vertex;
+			queue.poll();
+		
+			
+			if(cost > distanceDP[here]) {
+				continue;
+			}
+			
+			System.out.println(here);
+			
+			for(int i = 0; i < n; i++) {
+				
+				if(graph[here][i] != 0 && distanceDP[here] + graph[here][i] < distanceDP[i]) {
+					
+					distanceDP[i] = distanceDP[here] + graph[here][i];
+					queue.offer(new Element(i, distanceDP[i]));
+					
+				}
+				
+				
+			}
+			
+			
+		}
+		System.out.println();
+		for(int i = 1; i < n; i++) {
+			System.out.print(distanceDP[i] + " ");
+		}
 		
 		
 		

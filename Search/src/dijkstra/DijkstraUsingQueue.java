@@ -52,34 +52,38 @@ public class DijkstraUsingQueue {
 		// TODO : 주석달기
 		
 		int n = g.getN() + 1;
-		boolean visit[] = new boolean [n];
 		int distanceDP[] = new int [n];
 		int graph [][] = g.getGraph();
 		
 		for(int i = 0; i < n; i ++) {
-			distanceDP[i] = 1000;
+			distanceDP[i] = 1000; // Integer최대값을 넣으면 값이 넘어가서 -값으로 전환됨 그래서 1000으로 지정 
 		}
 		
+		// 이 부분까지는 일단 다익스트라와 동일 
 		
 		distanceDP[start] = 0;
-		visit[start]= true;
 		
-		queue.offer(new Element(start, distanceDP[start]));
+		queue.offer(new Element(start, distanceDP[start])); // 우선 큐에 시작점 Element을 넣어줌. 앞부분은 노드, 뒷부분은 시작노드와 해당노드까지의 거리 
 		
+		// 큐가 완전히 빌 때 까지 반복문 수행 
 		while(!queue.isEmpty()) {
-			int cost = queue.peek().distance;
-			int here = queue.peek().vertex;
-			queue.poll();
+			int cost = queue.peek().distance; // cost : 큐에서 꺼낸 노드까지의 거리 
+			int here = queue.peek().vertex;	  // here : 가야할 노드 
+			queue.poll(); // 해당 노드를 꺼내주고 
 		
 			
-			if(cost > distanceDP[here]) {
+			if(cost > distanceDP[here]) { // 이 노드까지의 거리가 dp 상에 기록되어 있는 거리보다 길면 패스한다. 아닐경우 아래 반복문 수행 
 				continue;
 			}
 			
 			System.out.println(here);
 			
 			for(int i = 0; i < n; i++) {
-				
+				// 만일, 확인하려는 노드가 시작노드가 아니고,
+				// dp에 기록된 현재 노드까지의 거리 + 현재노드와 연결된 i노드와의 거리가 
+				// dp에 기록된 i거리와 시작노드와의 거리보다 작으면,
+				// 즉 현재의 노드를 거쳐 i까지 가는 노드의 길이가, 기존에 기록된 i와의 거리의 최소값 보다 작으면 
+				// 이를 갱신하고 i의 element를 큐에 넣어준다.				
 				if(graph[here][i] != 0 && distanceDP[here] + graph[here][i] < distanceDP[i]) {
 					
 					distanceDP[i] = distanceDP[here] + graph[here][i];

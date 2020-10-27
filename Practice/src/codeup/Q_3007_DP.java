@@ -15,7 +15,8 @@ public class Q_3007_DP {
 	
 	// 출력 > 3, 5
 	
-	// 계속 시간초과. -> 반복문으로 일일히 계산하지 말고 누적합을 저장하고 구간만 따로 구하는 방법으로 해결할
+	// 계속 시간초과. -> 반복문으로 일일히 계산하지 말고 누적합을 저장. 예를 들어 2 3 사이의 구간을 구할때
+	// (3까지의 누접합) - (1까지의 누적합)  
 	
 	static int [] numArray ; 
 	
@@ -28,19 +29,22 @@ public class Q_3007_DP {
 		int numQuestion = sc.nextInt();
 		int result [] = new int [numQuestion];
 		
-		numArray = new int[numShoudMemo]; 
+		numArray = new int[numShoudMemo + 1]; 
 		
-		for(int i = 0; i < numShoudMemo; i++) {
-			
-			numArray[i] = sc.nextInt();	
+		for(int i = 0; i <= numShoudMemo; i++) {
+			if(i == 0)
+			numArray[i] = 0;	
+			else
+				numArray[i] = numArray[i-1] + sc.nextInt();
 			
 		}
 		
 		for(int i = 0; i < numQuestion; i++) {
 			
-			result[i] =  MemoDP(sc.nextInt() -1, sc.nextInt() - 1);
+			result[i] = (-numArray[sc.nextInt()-1]) + numArray[sc.nextInt()];
 			
 		}
+		
 		
 		sc.close();
 		
@@ -52,18 +56,6 @@ public class Q_3007_DP {
 		
 	}
 	
-	static int MemoDP(int start, int end) {
-		
-		int sum = 0;
-		
-		for(int i = start; i <= end; i++) {
-			
-			sum += numArray[i];
-			
-		}
-		
-		return sum;
-		
-	}
+	
 
 }
